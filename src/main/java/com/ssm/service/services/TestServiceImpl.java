@@ -3,6 +3,7 @@ package com.ssm.service.services;
 
 import com.ssm.dao.ArticleMapper;
 import com.ssm.dao.BaseMapper;
+import com.ssm.dao.ChangyouMapper;
 import com.ssm.model.Article;
 import com.ssm.service.interfaces.ITestService;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class TestServiceImpl implements ITestService {
     BaseMapper baseMapper;
     @Resource
     ArticleMapper articleMapper;
+    @Resource
+    ChangyouMapper changyouMapper;
 
     @Override
     public Map<String, Object> getUserPaging() {
@@ -62,9 +65,23 @@ public class TestServiceImpl implements ITestService {
         return articleMapper.allTourist();
     }
 
-    //获取所有美食数据
+    //获取所有路线
     @Override
-    public List getAllFood() {
-        return articleMapper.allFood();
+    public List getAllRoad() {
+        return articleMapper.allRoad();
     }
+
+    //根据id获取路线数据
+    @Override
+    public Article getRoadById(String id) {
+        Article road = articleMapper.selectByPrimaryKey(id);
+        return road;
+    }
+
+    //获取畅游数据
+    @Override
+    public List getChongyouTab(String type) {
+        return changyouMapper.chongyouTab(type);
+    }
+
 }

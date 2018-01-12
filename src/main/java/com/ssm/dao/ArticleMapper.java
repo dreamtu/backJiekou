@@ -23,5 +23,5 @@ public interface ArticleMapper {
 
     Article touristByTitle(String title);//根据景点名称获取景点数据
 
-    List allFood();//获取所有美食
+    List allRoad();//获取所有路线
 }

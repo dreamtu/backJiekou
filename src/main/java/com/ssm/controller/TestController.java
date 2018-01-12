@@ -26,13 +26,6 @@ public class TestController {
     @Resource
     ITestService testService;
 
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public String test() {
-        return "你好啊SSM框架";
-    }
-
-
     @RequestMapping(value = "/test1", method = RequestMethod.GET)
     public Map<String, Object> test1() {
         logger.info("TestController=======================" + JSON.toJSONString(testService.getUserPaging()));
@@ -57,12 +50,24 @@ public class TestController {
         return testService.touristByTitle(title);
     }
 
-    //获取所有美食
-    @RequestMapping(value = "/foodList", method = RequestMethod.GET)
-    public List foodList() {
-        return testService.getAllFood();
+    //获取所有路线
+    @RequestMapping(value = "/roadList", method = RequestMethod.GET)
+    public List roadList() {
+        return testService.getAllRoad();
     }
 
+    //根据ID获取路线
+    @RequestMapping(value = "/roadById/{id}", method = RequestMethod.GET)
+    public Article roadById(@PathVariable("id") String id) {
+        return testService.getRoadById(id);
+    }
+
+
+    //获取畅游数据
+    @RequestMapping(value = "/changyouList/{type}", method = RequestMethod.GET)
+    public List getChongyouTab(@PathVariable("type") String type) {
+        return testService.getChongyouTab(type);
+    }
 
 /*    客户端流程：如果需要登录首先跳到oauth2服务端进行登录授权，
     成功后服务端返回auth code，然后客户端使用auth code去服务器端换取access token，

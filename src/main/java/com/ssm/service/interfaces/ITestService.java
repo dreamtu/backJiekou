@@ -20,6 +20,10 @@ public interface ITestService {
 
     List getAllTourist();//获取所有景点
 
-    List getAllFood();//获取所有美食
+    List getAllRoad();//获取所有路线
+
+    Article getRoadById(String id);//根据id获取路线数据
+
+    List getChongyouTab(String type); //获取畅游数据
 
 }
