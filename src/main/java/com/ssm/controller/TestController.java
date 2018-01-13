@@ -2,6 +2,7 @@ package com.ssm.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.ssm.model.Article;
+import com.ssm.model.Changyou;
 import com.ssm.service.interfaces.ITestService;
 import com.ssm.util.CommonUtil;
 import org.apache.log4j.Logger;
@@ -67,6 +68,24 @@ public class TestController {
     @RequestMapping(value = "/changyouList/{type}", method = RequestMethod.GET)
     public List getChongyouTab(@PathVariable("type") String type) {
         return testService.getChongyouTab(type);
+    }
+
+    //根据ID获取三张地图
+    @RequestMapping(value = "/bigmapById/{id}", method = RequestMethod.GET)
+    public Changyou bigmapById(@PathVariable("id") int id) {
+        return testService.getBigmapById(id);
+    }
+
+    //获取所有美食
+    @RequestMapping(value = "/foodList", method = RequestMethod.GET)
+    public List foodList() {
+        return testService.getAllFood();
+    }
+
+    //获取所有特色商品
+    @RequestMapping(value = "/teseList", method = RequestMethod.GET)
+    public List teseList() {
+        return testService.getAllTese();
     }
 
 /*    客户端流程：如果需要登录首先跳到oauth2服务端进行登录授权，

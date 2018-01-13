@@ -5,6 +5,7 @@ import com.ssm.dao.ArticleMapper;
 import com.ssm.dao.BaseMapper;
 import com.ssm.dao.ChangyouMapper;
 import com.ssm.model.Article;
+import com.ssm.model.Changyou;
 import com.ssm.service.interfaces.ITestService;
 import org.springframework.stereotype.Service;
 
@@ -84,4 +85,22 @@ public class TestServiceImpl implements ITestService {
         return changyouMapper.chongyouTab(type);
     }
 
+    //根据id获取三张大地图
+    @Override
+    public Changyou getBigmapById(int id) {
+        Changyou bigmap = changyouMapper.selectByPrimaryKey(id);
+        return bigmap;
+    }
+
+    //获取所有美食数据
+    @Override
+    public List getAllFood() {
+        return articleMapper.allFood();
+    }
+
+    //获取所有特色商品
+    @Override
+    public List getAllTese() {
+        return articleMapper.allTese();
+    }
 }
